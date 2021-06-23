@@ -1,0 +1,79 @@
+
+
+{% load static%}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.83.1">
+    <title>Регистрация</title>
+
+<link href="{% static "profil/assets/dist/css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <style>{
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) { {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <link href="{% static "profil/signin.css" %}" rel="stylesheet">
+  </head>
+  <body class="text-center">
+  <main class="form-signin">
+    {% block content %}
+
+  <form action="" method="POST">
+      {% csrf_token %}
+
+
+          <a href="/"><img class="mb-4" src={% static "profil/l4_svg.svg" %} alt="" width="72" height="57"></a>
+    <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
+    {%for message in messages %}
+    <p style="color:#ff0000">{{ message}}</p>
+  {% endfor %}
+    <div class="form-floating">
+      <input type="text" name="username" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">Ваш логин</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" name="password1" class="form-control" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Ваш Пароль</label>
+        <input type="password" name="password2" class="form-control" id="floatingPassword" placeholder="Password">
+      <label style="margin-top: 65px" for="floatingPassword">Повторите пароль</label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit" >Зарегестрироваться</button>
+    <p class="mt-5 mb-3 text-muted">&copy; Команда "Кулпати"</p>
+    <p> <a href="/accounts/login/"> Вернутся на авторизацию </a></p>
+  </form>
+    {% endblock %}
+</main>
+
+
+
+  </body>
+</html>
+
+
+
+
+{#<!--#}
+{#{% block content %}#}
+{#<h2>Sign up</h2>#}
+{#<form method="post">#}
+{#  {% csrf_token %}#}
+{#  {{ form}}#}
+{#  <button type="submit">Sign up</button>#}
+{#</form>#}
+{#{% endblock content %}#}
+{#-->#}

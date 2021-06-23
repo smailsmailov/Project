@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Кулпати</title>
+        <link rel="shortcut icon" href="{% static 'profil/l4.png' %}" type="image/x-icon">
+        <link rel="stylesheet" href="{% static 'profil/comments (1).css' %}"/>
+        <link href="{% static "profil/assets/dist/css/bootstrap.min.css" %}" rel="stylesheet">
+    </head>
+    <body style="overflow-x: hidden;">
+        <div class="textik">
+            <a href="#upp">
+            Наверх
+            </a>
+        </div>
+        <header>
+            <div class="up" id="upp">
+            <div class="intro">
+                <a href="/"><img class="kartinalogo" src="{% static 'profil/l4_svg.svg' %}" width="78" height="70" /></a>
+                <p>Туристическая карта Приморья</p>
+            </div>
+                <nav class="menu">
+                <a href="" target="_blank">Зима</a>
+                <a href="" target="_blank">Весна</a>
+                <a href="" target="_blank">Лето</a>
+                <a href="" target="_blank">Осень</a>
+            </nav>
+            </div>
+            <hr>
+            <div class="field">
+                <button type="button" class="button"><img src="{% static 'profil/prof.png' %}" width="35.61" height="25.71"/>Профиль</button>
+            </div>
+        </header>
+        <div style="display: flex;margin-left: auto;margin-right: auto;width: 450px;margin-top: 100px ; width: 450px">
+        {% if user.is_authenticated %}
+          <form action="" method="POST" >
+            {% csrf_token %}
+
+          <a href="/"><img class="mb-4" src={% static "profil/l4_svg.svg" %} alt="" width="72" height="57"></a>
+    <h1 class="h3 mb-3">Вы можете отправить свой отзыв нам на почту  </h1>
+              <div class="form-floating">
+              <input required type="text" name="comment" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Ваш отзыв </label>
+              </div>
+                  <div class="checkbox mb-3">
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit" >Отправить</button>
+      <p class="mt-5 mb-3 text-muted">&copy; Команда "Кулпати"</p>
+  </form>
+            {% else %}
+            <span style="left: 50% ; right: 50%; color: red">Вы не авторизованны , <a href="accounts/login">войдите</a></span>
+        {% endif %}
+        </div>
+        <div class="wrrap1">
+        <div class="rev">
+        </div>
+        </div>
+        {% for i in comments %}
+        <div class="total">
+            <div class="otzyv">
+                <div class="front">
+                    <div class="name">
+                        {{ i.name }}
+                    </div>
+                    <div class="data">
+                        {{ i.text_3 }}
+                    </div>
+                </div>
+                <div class="teh">
+                    {{ i.text }}
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="wrap3" style="margin-left: auto;margin-right: auto">
+                <div class="imgo">
+                    <img src="{% static 'profil/logo.png' %}" width="383px" height="137px" />
+                </div>
+                <div class="icons" id="weare">
+                    <a href="https://vk.com/away.php?utf=1&to=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100008186521310"  target="_blank"><img src="{% static 'profil/face.png' %}" width="70" height="66"></a>
+                    <a href="https://vk.com/kleptomaniha" target="_blank"><img src="{% static 'profil/vk.png' %}" width="70" height="66"></a>
+                    <a href="https://www.instagram.com/dzhinglbelz_1/?r=nametag"  target="_blank"><img src="{% static 'profil/inst.png' %}" width="66" height="66"></a>
+                    <a href="https://twitter.com/newsvlru"  target="_blank"><img src="{% static 'profil/twit.png' %}" width="70" height="66"></a>
+                </div>
+                <div class="line">
+                    <hr>
+                </div>
+                <div class="under">
+                    <div class="copyrights">
+                        © 2021 Кулпати
+                    </div>
+                    <div class="contacts">
+                        <img src="{% static 'profil/callphone.jpg' %}" width="64" height="60">
+                        89146578676
+                    </div>
+                </div>
+            </div>
+
+    </div>
+</body>
+</html>

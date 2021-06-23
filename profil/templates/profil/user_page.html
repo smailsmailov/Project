@@ -1,0 +1,45 @@
+{% extends "profil/layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>Check</h1>
+    TEST
+    {% for i in content_autm %}
+        <div>
+            <h3>{{ i.name}}</h3>
+            <p>{{ i.notes }}</p>
+             <img style="width: 25px" src="{{ i.image.url}}" alt=подождите>
+        {% if  i.image1 %}
+            <img src="{{ i.image1.url}}">
+        {% endif %}
+        {% if i.image2 %}
+            <img src="{{ i.image2.url }}">
+        {% endif %}
+        </div>
+    {% endfor %}
+    {% for i in content_spring%}
+        <div>
+            <h3>{{ i.name}}</h3>
+            <p>{{ i.notes }}</p>
+             <img src="{{ i.image.url}}" alt=подождите>
+        <p>{{ i.img }}</p>
+        </div>
+    {% endfor %}
+    {% for i in content_summer %}
+        <div>
+            <h3>{{ i.name}}</h3>
+            <p>{{ i.notes }}</p>
+             <img src="{{ i.image.url }}" alt=подождите>
+        <p>{{ i.img }}</p>
+        </div>
+    {% endfor %}
+    {% for i in content_winter %}
+        <div>
+            <h3>{{ i.name}}</h3>
+            <img src="{{ i.image.url }}" alt=подождите>
+        </div>
+    {% endfor %}
+{% endblock %}
